@@ -35,7 +35,7 @@ public class HomeControllerTest {
         int amount = 1000;
 
         mvc.perform(
-                get("/hello/dto")
+                    get("/hello/dto")
                         .param("name", name)
                         .param("amount", String.valueOf(amount)))
                 .andExpect(status().isOk())
