@@ -1,4 +1,4 @@
-package com.jojodu.book;
+package com.jojoldu.book;
 
 public class Main {
     public static void main(String[] args) {
