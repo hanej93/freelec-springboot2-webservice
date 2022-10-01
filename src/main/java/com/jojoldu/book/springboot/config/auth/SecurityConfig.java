@@ -10,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final CustomOAuth2UserService customOAuth2UserService ;
+    private final CustomOAuth2UserService customOAuth2UserService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                     .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
                     .antMatchers("/api/v1/**").hasRole(Role.USER.name())
-                    .antMatchers().authenticated()
+                    .anyRequest().authenticated()
                 .and()
                     .logout()
                         .logoutSuccessUrl("/")
@@ -29,7 +29,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .oauth2Login()
                         .userInfoEndpoint()
                             .userService(customOAuth2UserService);
-
-
     }
 }
